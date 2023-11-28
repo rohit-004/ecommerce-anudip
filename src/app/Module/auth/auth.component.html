@@ -1,0 +1,7 @@
+<ng-container *ngIf="isLoggedIn; else registerComponent">
+    <app-signin [changeTemplate]="changeTemplate"/>
+  </ng-container>
+  
+  <ng-template #registerComponent>
+    <app-signup  />
+  </ng-template>

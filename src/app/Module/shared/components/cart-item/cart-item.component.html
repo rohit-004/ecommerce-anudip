@@ -1,0 +1,52 @@
+<div class="p-5 shadow-lg">
+  <div class="flex items-center">
+    <div class="w-[5rem] h-[5rem] lg:w-[9rem] lg:h-[9rem]">
+      <img
+        class="w-full h-full object-contain object-top"
+        [src]='cartItem.product.imageUrl'
+        alt=""
+      />
+    </div>
+    <div class="ml-5 space-y-1">
+      <p class="font-semibold">
+        {{cartItem.product.title}}
+      </p>
+      <p class="text-gray-500">Size : {{cartItem.size}} , {{cartItem.color}}</p>
+      <p class="text-gray-500 mt-2">Seller : {{cartItem.brand}}</p>
+
+      <div class="flex space-x-2 items-center pt-3">
+        <p class="font-semibold">₹{{cartItem.product.price}}</p>
+        <p class="text-gray-500 line-through">₹{{cartItem.product.discountedPrice}}</p>
+        <p class="text-green-500 font-semibold">{{cartItem.product.discountedPercent}}% off</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showButton" class="flex items-center lg:space-x-10 pt-4 justify-between">
+    <div class="flex items-center space-x-2">
+      <div class="example-button-container">
+        <button
+          mat-mini-fab
+          color="accent"
+          (click)="updateCartItem(-1)"
+          [disabled]="cartItem.quantity===1"
+        >
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+      <span class="py1 px-7 border border-gray-800 rounded-sm"> {{cartItem.quantity}} </span>
+      <div class="example-button-container">
+        <button
+          mat-mini-fab
+          color="accent"
+          (click)="updateCartItem(+1)"
+          [disabled]="false"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+    <button (click)="removeCartItem()" color="accent" mat-stroked-button>
+      Remove
+    </button>
+  </div>
+</div>
